@@ -1,0 +1,46 @@
+-- SQL OBJECTIVES | FNP SALES ANALYSIS PROJECT
+
+#Total Revenue
+-- Calculate the total revenue generated across all completed orders to evaluate overall business performance.
+
+#Total Orders
+-- Determine the total number of unique orders placed in the system to measure order volume and transaction activity.
+
+#Top-selling Products
+-Identify the highest-performing products based on total revenue to understand product contribution and sales concentration.
+
+#Monthly Revenue
+ Analyse revenue trends monthly to detect seasonality, growth patterns, and occasion-driven sales spikes.
+
+#Average Delivery Time
+-- Compute the average delivery duration to assess operational efficiency and identify potential delivery delays.
+
+#Revenue by City
+-- Evaluate city-wise revenue distribution to identify high-performing locations and prioritize regional business strategies.
+
+#Orders by Occasion
+-- analyse the number of orders placed for each occasion to understand demand patterns driven by events and celebrations.
+
+#Customer Segmentation Base
+-- Generate customer-level metrics such as total spend, order frequency, and average order value to serve as the foundation for customer segmentation.
+
+#Time-series Dataset for Sales Forecasting
+-- Prepare a structured daily or monthly revenue dataset suitable for time-series forecasting and trend analysis.
+
+#Product Demand Prediction Dataset
+-- Create a product-level dataset incorporating quantity sold, pricing, temporal attributes, and occasion information to support demand prediction models.
+
+#Delivery Time Prediction Dataset
+-- Build an order-level dataset capturing delivery duration, order characteristics, location, and time attributes for delivery delay prediction modelling.
+
+#Location-wise Delivery Performance
+-- Compare delivery performance across locations to identify regions with consistent delays or operational inefficiencies.
+
+#Price vs Quantity (Elasticity Check)
+-- analyse the relationship between product price and quantity sold to evaluate price sensitivity and demand elasticity.
+
+#Occasion-wise Spending Analysis
+-- Measure total and average customer spending across occasions to identify high-revenue events and optimize promotional planning.
+
+#Customer RFM Model
+-- Construct Recency, Frequency, and Monetary (RFM) metrics to classify customers based on purchasing behaviour and support targeted marketing strategies.
