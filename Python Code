@@ -1,0 +1,125 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from scipy.stats import pearsonr, f_oneway
+from statsmodels.tsa.stattools import adfuller
+from statsmodels.tsa.arima.model import ARIMA
+
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.cluster import KMeans
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
+
+orders = pd.read_csv(""D:/Customer datasets/order.csv"", parse_dates=["Order_Date", "Delivery_Date"])
+products = pd.read_csv(""D:/Customer_datasets/products.csv"")
+customers = pd.read_csv(""D:/Customer_datasets/customers.csv"")
+
+df = orders.merge(products, on="Product_ID", how="left") \
+           .merge(customers, on="Customer_ID", how="left")
+
+print(df.info())
+print(df.describe())
+
+plt.hist(df["Revenue"], bins=30)
+plt.title("Revenue Distribution")
+plt.show()
+
+print("Total Revenue:", df["Revenue"].sum())
+print("Average Order Value:", df["Revenue"].mean())
+print("Average Delivery Days:", df["Delivery Day"].mean())
+
+" STATISTICAL HYPOTHESIS TESTS"
+
+"H1: Price affects Quantity"
+corr, p_val = pearsonr(df["Price (INR)"], df["Quantity"])
+print("Price vs Quantity Correlation:", corr)
+print("P-value:", p_val)
+
+"H2: Delivery time differs by location"
+
+location_groups = [g["Delivery Day"].values for _, g in df.groupby("Location")]
+f_stat, p_loc = f_oneway(*location_groups)
+print("ANOVA p-value (Delivery Time vs Location):", p_loc)
+
+"SALES FORECASTING (TIME SERIES) "
+
+daily_sales = df.groupby("Order_Date")["Revenue"].sum()
+
+"Stationarity test"
+
+adf_result = adfuller(daily_sales)
+print("ADF p-value:", adf_result[1])
+
+"ARIMA Model"
+
+model = ARIMA(daily_sales, order=(1,1,1))
+model_fit = model.fit()
+
+forecast = model_fit.forecast(steps=30)
+
+plt.plot(daily_sales, label="Actual")
+plt.plot(forecast, label="Forecast")
+plt.legend()
+plt.title("Sales Forecast")
+plt.show()
+
+"Residual diagnostics"
+
+residuals = model_fit.resid
+plt.hist(residuals, bins=30)
+plt.title("Forecast Residuals")
+plt.show()
+
+"PRODUCT DEMAND PREDICTION"
+
+X_demand = df[["Price (INR)", "Month", "Hour"]]
+y_demand = df["Quantity"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_demand, y_demand, test_size=0.2, random_state=42
+)
+
+rf = RandomForestRegressor(random_state=42)
+rf.fit(X_train, y_train)
+
+y_pred = rf.predict(X_test)
+
+print("Demand MAE:", mean_absolute_error(y_test, y_pred))
+print("Demand R2:", r2_score(y_test, y_pred))
+
+" DELIVERY TIME PREDICTION"
+
+X_del = df[["Quantity", "Hour"]]
+y_del = df["Delivery Day"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_del, y_del, test_size=0.2, random_state=42
+)
+
+gbr = GradientBoostingRegressor()
+gbr.fit(X_train, y_train)
+
+y_pred = gbr.predict(X_test)
+
+print("Delivery MAE:", mean_absolute_error(y_test, y_pred))
+print("Delivery RMSE:", np.sqrt(mean_squared_error(y_test, y_pred)))
+
+"CUSTOMER SEGMENTATION (RFM)"
+
+rfm = df.groupby("Customer_ID").agg({
+    "Order_Date": lambda x: (df["Order_Date"].max() - x.max()).days,
+    "Order_ID": "count",
+    "Revenue": "sum"
+}).reset_index()
+
+rfm.columns = ["Customer_ID", "Recency", "Frequency", "Monetary"]
+
+scaler = StandardScaler()
+rfm_scaled = scaler.fit_transform(rfm[["Recency", "Frequency", "Monetary"]])
+
+kmeans = KMeans(n_clusters=3, random_state=42)
+rfm["Segment"] = kmeans.fit_predict(rfm_scaled)
+
+print(rfm.groupby("Segment").mean())
