@@ -12,7 +12,7 @@ This project is designed to reflect **real FNP business challenges**, not generi
 
 ---
 
-## 🎯 Business Context (Why FNP Is Unique)
+## Business Context (Why FNP Is Unique)
 FNP operates in a domain where:
 - Purchases are **emotion-driven**
 - Demand spikes during **occasions** (Valentine’s Day, Birthdays, Anniversaries)
@@ -182,7 +182,7 @@ Together, these insights form a **cohesive decision framework for FNP**.
 
 ---
 
-## 💡 Final Business Recommendations for FNP
+##  Final Business Recommendations for FNP
 - Increase inventory **2–3 weeks before major occasions**
 - Prioritize logistics capacity in delay-prone locations
 - Use sales forecasts for
