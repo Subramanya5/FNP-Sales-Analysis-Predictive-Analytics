@@ -1,0 +1,22 @@
+1. Perform exploratory data analysis (EDA) to understand sales, customer,
+   product, and delivery behavior.
+
+2. Apply descriptive statistics to summarize revenue, demand, and delivery
+   performance.
+
+3. Test statistical hypotheses to evaluate relationships between key variables
+   such as price vs quantity and order size vs delivery time.
+
+4. Build a time-series model to forecast future sales and evaluate its
+   reliability using residual diagnostics.
+
+5. Train machine learning models to predict:
+   a) Product demand
+   b) Delivery time
+
+6. Segment customers based on purchasing behavior using clustering techniques.
+
+7. Evaluate model performance using appropriate metrics and diagnostic tests.
+
+8. Prepare ML-ready datasets that align with business decision-making for
+   sales planning, inventory optimization, marketing, and logistics.
