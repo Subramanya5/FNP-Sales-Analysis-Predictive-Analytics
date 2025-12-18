@@ -140,7 +140,7 @@ Sales forecasts must be **adjusted for major occasions**; historical averages ar
 ![Top 10 Products](images/Top_products.png)
 *Top selling products by revenue*
 
-![Dashboard_overview](images/Dashboard of FNP.png)
+![Dashboard_overview](images/Dashboard_of_FNP.png)
 *Dashboard_overview*
 
 ### Key Insight
