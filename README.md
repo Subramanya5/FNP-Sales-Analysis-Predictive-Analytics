@@ -124,7 +124,7 @@ Sales forecasts must be **adjusted for major occasions**; historical averages ar
 | Average Delivery Time | 5.53 Days |
 | Top Selling Product | *Et Set* |
 | Best Occasion | *Magnam Set* |
-| Time-Series Forecast Error (MAE) | X |
+| Time-Series Forecast Error (MAE) | ₹8421.56 |
 
 ### Methods Used
 - Descriptive statistics  
@@ -132,13 +132,16 @@ Sales forecasts must be **adjusted for major occasions**; historical averages ar
 - Random Forest regression  
 - Feature importance analysis  
 
-## 📈 Visual Highlights
+## Visual Highlights
 
-![Monthly Sales Chart]("C:/Users/ss748/OneDrive/Pictures/Screenshots/Monthly_sales.png")
+![Monthly Sales Chart](images/Monthly_sales.png)
 *Monthly Revenue trend*
 
-![Top 10 Products](images/top_products.png)
+![Top 10 Products](images/Top_products.png)
 *Top selling products by revenue*
+
+![Dashboard_overview](images/Dashboard of FNP.png)
+*Dashboard_overview*
 
 ### Key Insight
 - Past demand is the strongest predictor  
