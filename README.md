@@ -48,6 +48,13 @@ The analysis is built on three primary datasets:
 
 ---
 
+## Quick Summary
+
+A full pipeline for FNP (Flowers & Gifts) sales analysis integrating:
+- Excel dashboard for business KPIs
+- SQL for data engineering and feature extraction  
+- Python for statistical analysis, forecasting, segmentation, and prediction
+
 ##  Phase 1 — Excel Dashboard (Business Understanding)
 
 ### Objective
@@ -109,11 +116,29 @@ Sales forecasts must be **adjusted for major occasions**; historical averages ar
 ### Business Question
 *Which products should FNP stock more of before key occasions?*
 
+## Key Results (Snapshot)
+
+| Metric | Result |
+|--------|--------|
+| Total Revenue | ₹35,20,984.00 |
+| Average Delivery Time | 5.53 Days |
+| Top Selling Product | *Et Set* |
+| Best Occasion | *Magnam Set* |
+| Time-Series Forecast Error (MAE) | X |
+
 ### Methods Used
 - Descriptive statistics  
 - Pearson correlation (price vs demand)  
 - Random Forest regression  
 - Feature importance analysis  
+
+## 📈 Visual Highlights
+
+![Monthly Sales Chart]("C:/Users/ss748/OneDrive/Pictures/Screenshots/Monthly_sales.png")
+*Monthly Revenue trend*
+
+![Top 10 Products](images/top_products.png)
+*Top selling products by revenue*
 
 ### Key Insight
 - Past demand is the strongest predictor  
@@ -146,7 +171,7 @@ Retention strategies should prioritize **high-value occasion buyers**, while pro
 
 ---
 
-## Delivery Time Prediction (Operational Excellence)
+## Delivery Time Prediction 
 
 ### Business Question
 *What causes delivery delays, and can we predict them?*
